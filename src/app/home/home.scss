@@ -1,0 +1,36 @@
+// Custom styles for the home component
+.mockup-code {
+  // Hide any window control buttons that DaisyUI might add
+  &::before {
+    display: none !important;
+  }
+
+  pre {
+    margin: 0;
+    padding: 1rem;
+    background-color: hsl(var(--b2));
+    border-radius: var(--rounded-box, 0.5rem);
+    
+    code {
+      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  }
+}
+
+// Smooth transitions for copy button
+.btn-square {
+  transition: all 0.2s ease-in-out;
+}
+
+// Ensure proper spacing in flex containers
+.flex {
+  align-items: stretch;
+  
+  .mockup-code {
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+  }
+}

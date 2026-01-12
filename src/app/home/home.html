@@ -1,0 +1,150 @@
+<div class="container mx-auto p-4 md:p-6 max-w-6xl">
+    <div class="card bg-base-100 shadow-lg">
+        <div class="card-body">
+            <h2 class="card-title text-2xl mb-4">String Localization Converter</h2>
+            
+            <div class="form-control mb-6">
+                <label class="label">
+                    <span class="label-text font-semibold">Enter String to be Localized</span>
+                </label>
+                <input 
+                    [(ngModel)]="localizationInputString" 
+                    (ngModelChange)="convertToLocalizationString()" 
+                    placeholder="e.g., Hello World!" 
+                    class="input input-bordered input-primary w-full" 
+                    type="text"
+                >
+            </div>
+
+            @if(localizationOutputString) {
+                <div class="space-y-4">
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text font-semibold">Localized String</span>
+                        </label>
+                        <div class="flex gap-2">
+                            <div class="mockup-code flex-1">
+                                <pre data-prefix=">">
+                                    <code class="text-sm">{{ localizationOutputString }}</code>
+                                </pre>
+                            </div>
+                            <button 
+                                (click)="copyToClipboard(localizationOutputString, 'string')"
+                                class="btn btn-primary btn-square"
+                                [class.btn-success]="copiedType === 'string'"
+                                [title]="copiedType === 'string' ? 'Copied!' : 'Copy'"
+                            >
+                                @if(copiedType !== 'string') {
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                    </svg>
+                                }
+
+                                @if(copiedType === 'string') {
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                }
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text font-semibold">CamelCase String</span>
+                        </label>
+                        <div class="flex gap-2">
+                            <div class="mockup-code flex-1">
+                                <pre data-prefix=">">
+                                    <code class="text-sm">{{ camelCaseOutput }}</code>
+                                </pre>
+                            </div>
+                            <button 
+                                (click)="copyToClipboard(camelCaseOutput || '', 'camelCase')"
+                                class="btn btn-primary btn-square"
+                                [class.btn-success]="copiedType === 'camelCase'"
+                                [title]="copiedType === 'camelCase' ? 'Copied!' : 'Copy'"
+                            >
+                                @if(copiedType !== 'camelCase') {
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                    </svg>
+                                }
+
+                                @if(copiedType === 'camelCase') {
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                }
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text font-semibold">Dart Code (Localized)</span>
+                        </label>
+                        <div class="flex gap-2">
+                            <div class="mockup-code flex-1">
+                                <pre data-prefix=">"><code class="text-sm">{{ localizationOutputCode }}</code></pre>
+                            </div>
+                            <button 
+                                (click)="copyToClipboard(localizationOutputCode || '', 'code')"
+                                class="btn btn-primary btn-square"
+                                [class.btn-success]="copiedType === 'code'"
+                                [title]="copiedType === 'code' ? 'Copied!' : 'Copy'"
+                            >
+                                @if(copiedType !== 'code') {
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                    </svg>
+                                }
+
+                                @if(copiedType === 'code') {
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                }
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-control">
+                        <label class="label">
+                            <span class="label-text font-semibold">Dart Code (CamelCase)</span>
+                        </label>
+                        <div class="flex gap-2">
+                            <div class="mockup-code flex-1">
+                                <pre data-prefix=">">
+                                    <code class="text-sm">{{ camelCaseCode }}</code>
+                                </pre>
+                            </div>
+                            <button 
+                                (click)="copyToClipboard(camelCaseCode || '', 'camelCaseCode')"
+                                class="btn btn-primary btn-square"
+                                [class.btn-success]="copiedType === 'camelCaseCode'"
+                                [title]="copiedType === 'camelCaseCode' ? 'Copied!' : 'Copy'"
+                            >
+                                @if(copiedType !== 'camelCaseCode') {
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                    </svg>
+                                }
+
+                                @if(copiedType === 'camelCaseCode') {
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+                                }
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            } @else {
+                <div class="text-center py-8 text-base-content/60">
+                    <p>Enter a string above to see the localized output</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
