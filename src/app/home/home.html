@@ -24,7 +24,7 @@
                         </label>
                         <div class="flex gap-2">
                             <div class="mockup-code flex-1">
-                                <pre data-prefix=">">
+                                <pre>
                                     <code class="text-sm">{{ localizationOutputString }}</code>
                                 </pre>
                             </div>
@@ -55,7 +55,7 @@
                         </label>
                         <div class="flex gap-2">
                             <div class="mockup-code flex-1">
-                                <pre data-prefix=">">
+                                <pre>
                                     <code class="text-sm">{{ camelCaseOutput }}</code>
                                 </pre>
                             </div>
@@ -86,7 +86,9 @@
                         </label>
                         <div class="flex gap-2">
                             <div class="mockup-code flex-1">
-                                <pre data-prefix=">"><code class="text-sm">{{ localizationOutputCode }}</code></pre>
+                                <pre>
+                                    <code class="text-sm">{{ localizationOutputCode }}</code>
+                                </pre>
                             </div>
                             <button 
                                 (click)="copyToClipboard(localizationOutputCode || '', 'code')"
@@ -115,7 +117,7 @@
                         </label>
                         <div class="flex gap-2">
                             <div class="mockup-code flex-1">
-                                <pre data-prefix=">">
+                                <pre>
                                     <code class="text-sm">{{ camelCaseCode }}</code>
                                 </pre>
                             </div>

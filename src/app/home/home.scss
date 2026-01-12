@@ -7,14 +7,18 @@
 
   pre {
     margin: 0;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
     background-color: hsl(var(--b2));
     border-radius: var(--rounded-box, 0.5rem);
+    text-align: left;
     
     code {
       font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
       white-space: pre-wrap;
       word-break: break-word;
+      text-align: left;
+      display: block;
+      line-height: 1.5;
     }
   }
 }
@@ -22,15 +26,4 @@
 // Smooth transitions for copy button
 .btn-square {
   transition: all 0.2s ease-in-out;
-}
-
-// Ensure proper spacing in flex containers
-.flex {
-  align-items: stretch;
-  
-  .mockup-code {
-    min-height: 3rem;
-    display: flex;
-    align-items: center;
-  }
 }
