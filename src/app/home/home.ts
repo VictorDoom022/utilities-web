@@ -28,10 +28,10 @@ export class Home {
     }
     
     this.localizationOutputString = Helpers.toLocalizedString(this.localizationInputString);
-    this.localizationOutputCode = `static const String ${Helpers.toLocalizedString(this.localizationInputString, '_')} = '${Helpers.toLocalizedString(this.localizationInputString)};'`;
+    this.localizationOutputCode = `static const String ${Helpers.toLocalizedString(this.localizationInputString, '_')} = '${Helpers.toLocalizedString(this.localizationInputString)}';`;
     
     this.camelCaseOutput = Helpers.toCamelCase(this.localizationInputString);
-    this.camelCaseCode = `static const String ${Helpers.toCamelCase(this.localizationInputString)} = '${Helpers.toLocalizedString(this.localizationInputString)};'`;
+    this.camelCaseCode = `static const String ${Helpers.toCamelCase(this.localizationInputString)} = '${Helpers.toLocalizedString(this.localizationInputString)}';`;
   }
 
   async copyToClipboard(text: string, type: 'string' | 'code' | 'camelCase' | 'camelCaseCode'): Promise<void> {
